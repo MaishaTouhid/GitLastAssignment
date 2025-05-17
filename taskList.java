@@ -11,39 +11,58 @@ class ListManager {
     static Scanner scanner = new Scanner(System.in);
     static List<String> itemlist = new ArrayList<>();
 
-public static void main(String[] args){
-  while(true){
+public static void main(String[] args) {
+        while (true) {
+            int choice = getUserChoice();
+
+            switch (choice) {
+                case ADD_ITEM -> addItem();
+                case REMOVE_ITEM -> removeItem();
+                case SHOW_ITEMS -> showItems();
+                case EXIT -> {
+                    System.out.println("Goodbye...");
+                    return;
+                }
+                default -> System.out.println("Invalid choice. Please try again.\n");
+            }
+        }
+    }
+
+   private static int getUserChoice(){
       System.out.println("1: Add 2: Remove 3: Show 4: Exit");
       System.out.println("Enter your choice: ");
       int choice = scanner.nextInt();
       scanner.nextLine();
+      return choice;
+   }
 
-        if(choice == ADD_ITEM){
+        private static void addItem(){
             System.out.print("Item Name: ");
             String item = scanner.nextLine();
             itemlist.add(item);
             System.out.println("item added.\n");
 
-        }else if(choice == REMOVE_ITEM){
+        }
+        
+        private static void removeItem(){
             System.out.print("Enter Index to remove : ");
             int index = scanner.nextInt();
             scanner.nextLine();
+
             if(index >= 0 && index < itemlist.size()){
                 itemlist.remove(index);
                 System.out.println("Item removed. \n");
-      }
+          }
 
-        }else if(choice == SHOW_ITEMS){
+      }
+       private static void showItems(){
           System.out.println("Current List: ");
             for(int j = 0; j < itemlist.size(); j++){
                  System.out.println(j + ": " + itemlist.get(j));
-    }
-    System.out.println();
-
-        }else if(choice == EXIT){
-          System.out.println("Goodbye.....");
-            break;
           }
-        }
+        System.out.println();
+
       }
-    }
+}
+     
+    
