@@ -87,8 +87,10 @@ public static void main(String[] args) {
             System.out.println("The list is empty.\n");
         } else {
           System.out.println("Current List: ");
-            for(int j = 0; j < itemList.size(); j++){
-                 System.out.println(j + ": " + itemList.get(j));
+          int index = 0;
+            for(String item : itemList){
+                 System.out.println(index + ": " + item);
+                 index++;
           }
         System.out.println();
 
