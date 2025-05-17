@@ -12,6 +12,7 @@ class ListManager {
     static List<String> itemlist = new ArrayList<>();
 
 public static void main(String[] args) {
+      try{
         while (true) {
             int choice = getUserChoice();
 
@@ -26,7 +27,10 @@ public static void main(String[] args) {
                 default -> System.out.println("Invalid choice. Please try again.\n");
             }
         }
+    } finally{
+      scanner.close();
     }
+}
 
    private static int getUserChoice(){
       System.out.println("1: Add 2: Remove 3: Show 4: Exit");
