@@ -6,26 +6,34 @@ class ListManager {
 public static void main(String[] args){
   while(true){
       System.out.println("1: Add 2: Remove 3: Show 4: Exit");
+      System.out.println("Enter your choice: ");
       int choice = scanner.nextInt();
+      scanner.nextLine();
 
-        if(choice ==1){
+        if(choice == 1){
             System.out.print("Item Name: ");
-            scanner.nextLine();
-            itemlist.add(scanner.nextLine());
+            String item = scanner.nextLine();
+            itemlist.add(item);
+            System.out.println("item added.\n");
 
-        }else if(choice ==2){
-            System.out.print("I: ");
+        }else if(choice == 2){
+            System.out.print("Enter Index to remove : ");
             int index = scanner.nextInt();
-            if(index >=0&&index<itemlist.size()){
+            scanner.nextLine();
+            if(index >= 0 && index < itemlist.size()){
                 itemlist.remove(index);
+                System.out.println("Item removed. \n");
       }
 
-        }else if(choice==3){
-            for(int j=0;j<itemlist.size();j++){
-                 System.out.println(j+": "+itemlist.get(j));
+        }else if(choice == 3){
+          System.out.println("Current List: ");
+            for(int j = 0; j < itemlist.size(); j++){
+                 System.out.println(j + ": " + itemlist.get(j));
     }
+    System.out.println();
 
-        }else if(choice==4){
+        }else if(choice == 4){
+          System.out.println("Goodbye.....");
             break;
           }
         }
