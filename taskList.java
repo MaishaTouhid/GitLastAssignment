@@ -9,7 +9,7 @@ class ListManager {
     private static final int EXIT = 4;
 
     static Scanner scanner = new Scanner(System.in);
-    static List<String> itemlist = new ArrayList<>();
+    static List<String> itemList = new ArrayList<>();
 
 public static void main(String[] args) {
       try{
@@ -33,29 +33,32 @@ public static void main(String[] args) {
 }
 
    private static int getUserChoice(){
+    while(true){
       System.out.println("1: Add 2: Remove 3: Show 4: Exit");
-      System.out.println("Enter your choice: ");
+      System.out.print("Enter your choice: ");
       if(scanner.hasNextInt()){
       int choice = scanner.nextInt();
       scanner.nextLine();
       return choice;
       }else{
-        System.out.println("Invalid input. Please enter a number between 1 and 4.\n");
+        System.out.print("Invalid input. Please enter a number between 1 and 4.\n");
                 scanner.nextLine(); 
       }
-   }
+    }
+  }
 
         private static void addItem(){
             System.out.print("Item Name: ");
             String item = scanner.nextLine();
-            itemlist.add(item);
-            System.out.println("item added.\n");
+            itemList.add(item);
+            System.out.print("item added.\n");
 
         }
         
         private static void removeItem(){
-          if(itemlist.isEmpty()){
+          if(itemList.isEmpty()){
             System.out.println("the list is empty.\n");
+            scanner.nextLine();
             return;
           }
 
@@ -65,8 +68,8 @@ public static void main(String[] args) {
             int index = scanner.nextInt();
             scanner.nextLine();
 
-            if(index >= 0 && index < itemlist.size()){
-                itemlist.remove(index);
+            if(index >= 0 && index < itemList.size()){
+                itemList.remove(index);
                 System.out.println("Item removed. \n");
                 break;
           }else{
@@ -80,12 +83,12 @@ public static void main(String[] args) {
 
     }
        private static void showItems(){
-        if (itemlist.isEmpty()) {
+        if (itemList.isEmpty()) {
             System.out.println("The list is empty.\n");
         } else {
           System.out.println("Current List: ");
-            for(int j = 0; j < itemlist.size(); j++){
-                 System.out.println(j + ": " + itemlist.get(j));
+            for(int j = 0; j < itemList.size(); j++){
+                 System.out.println(j + ": " + itemList.get(j));
           }
         System.out.println();
 
